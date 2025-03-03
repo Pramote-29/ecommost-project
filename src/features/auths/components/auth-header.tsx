@@ -1,0 +1,23 @@
+import { Card,CardHeader,CardTitle,CardDescription } from "@/components/ui/card"
+
+interface AuthHeaderProps {
+    type: 'signup | signin'
+    children : React.ReactNode
+}
+
+const AuthHeader = ({children, type} : AuthHeaderProps) => {
+  const title = type === 'signup' ? 'สมัครสมาชิก' : 'เข้าสู่ระบบ'
+  const description = type === 'signup' ? 'กรุณากรอกข้อมูลเพื่อสมัครสมาชิก' : 'กรุณากรอกข้อมูลเพื่อเข้าสู่ระบบ'
+  return (
+    <div className="px-4 md:px-0">
+        <Card className="max-w-md mx-auto">
+            <CardHeader>
+                <CardTitle className="text-2xl font-bold text-red-500 text-center">{title}</CardTitle>
+                <CardDescription className="text-center">{description}</CardDescription>
+            </CardHeader>
+            {children}
+        </Card>
+    </div>
+  )
+}
+export default AuthHeader
